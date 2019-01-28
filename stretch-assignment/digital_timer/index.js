@@ -1,5 +1,6 @@
 window.onload = () => {
   const digits = Array.from(document.querySelectorAll(".digit:not(#colon)"));
+  const digitsAndColon = Array.from(document.querySelectorAll(".digit"));
   const btn = document.createElement("button");
   btn.textContent = "start";
   const resetBtn = document.createElement("button");
@@ -17,12 +18,11 @@ window.onload = () => {
   btn.onclick = () => {
     startTime = Date.now();
     btn.disabled = true;
-    digits.forEach(d => d.style.color = "black");
+    digitsAndColon.forEach(d => d.style.color = "black");
     const interval = setInterval(() => {
       let currentTime = Date.now() - startTime;
       if(currentTime > 10000) {
-        digits.forEach(d => d.style.color = "red");
-        document.getElementById("colon").style.color = "red";
+        digitsAndColon.forEach(d => d.style.color = "red");
         currentTime = 10000;
         clearInterval(interval);
         btn.disabled = false;
@@ -34,7 +34,7 @@ window.onload = () => {
 
   resetBtn.onclick = () => {
     startTime = Date.now();
-    digits.forEach(d => d.style.color = "black");
+    digitsAndColon.forEach(d => d.style.color = "black");
     renderTime(0);
   };
 };
