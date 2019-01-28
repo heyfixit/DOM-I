@@ -37,7 +37,7 @@ const siteContent = {
   },
 };
 
-document.addEventListener("DOMContentLoaded", () => {
+window.onload = () => {
   // Example: Update the img src for the logo
   let logo = document.getElementById("logo-img");
   logo.setAttribute('src', siteContent["nav"]["img-src"])
@@ -70,5 +70,15 @@ document.addEventListener("DOMContentLoaded", () => {
   Array.from(document.querySelectorAll(".main-content p"))
     .forEach((p, idx) => p.textContent = jsonPs[idx]);
 
+  // main-content img
   document.getElementById("middle-img").setAttribute("src", siteContent['main-content']['middle-img-src'])
-});
+
+  // contact
+  const section = document.querySelector(".contact");
+  Object.keys(siteContent.contact).forEach((item, idx) => {
+    section.children[idx].textContent = siteContent.contact[item];
+  });
+
+  // footer
+  document.querySelector("footer p").textContent = siteContent.footer.copyright;
+};
