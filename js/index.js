@@ -98,4 +98,28 @@ window.onload = () => {
   newLink2.textContent = "newLink2";
   newLink2.style.color = "green";
   nav.prepend(newLink2);
+
+  // Stretch button
+  const btn = document.getElementsByTagName("button")[0];
+  btn.onclick = () => {
+    document.getElementsByTagName("body")[0].style.position = "relative";
+    Array.from(document.querySelectorAll("body *")).forEach((e) => {
+      e.style.zIndex = 0;
+      e.style.position = "relative";
+      btn.style.position = "absolute";
+      btn.style.zIndex = 999999;
+      e.style.transition = "all 1s";
+      e.style.transform = `rotate(${Math.floor(Math.random() * 1080)}deg)`;
+      e.style.color = randomRGB();
+      e.style.backgroundColor = randomRGB();
+    });
+  };
 };
+
+function randomRGB() {
+  const vals = [];
+  for(i = 0; i < 3; i++) {
+    vals.push(Math.floor(Math.random() * 255));
+  }
+  return `rgb(${vals.join(",")})`;
+}
