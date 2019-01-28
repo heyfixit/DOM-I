@@ -37,6 +37,38 @@ const siteContent = {
   },
 };
 
-// Example: Update the img src for the logo
-let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+document.addEventListener("DOMContentLoaded", () => {
+  // Example: Update the img src for the logo
+  let logo = document.getElementById("logo-img");
+  logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+  const navs = Array.from(document.querySelectorAll("nav a"));
+  navs.forEach((n, idx) => {
+    n.textContent = siteContent.nav[`nav-item-${idx + 1}`];
+  });
+
+  // cta
+  document.querySelector(".cta-text h1").textContent = siteContent.cta.h1;
+  document.querySelector(".cta-text button").textContent = siteContent.cta.button;
+  document.getElementById("cta-img").setAttribute("src", siteContent.cta['img-src']);
+
+  // main-content
+
+  // headers
+  const jsonHeaders = Object.keys(siteContent['main-content'])
+    .filter(k => k.indexOf("h4") > -1)
+    .map(k => siteContent['main-content'][k]);
+
+  Array.from(document.getElementsByTagName("h4"))
+    .forEach((h, idx) => h.textContent = jsonHeaders[idx]);
+
+  // content
+  const jsonPs = Object.keys(siteContent['main-content'])
+    .filter(k => k.indexOf("content") > -1)
+    .map(k => siteContent['main-content'][k]);
+
+  Array.from(document.querySelectorAll(".main-content p"))
+    .forEach((p, idx) => p.textContent = jsonPs[idx]);
+
+  document.getElementById("middle-img").setAttribute("src", siteContent['main-content']['middle-img-src'])
+});
