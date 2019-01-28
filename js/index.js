@@ -81,4 +81,21 @@ window.onload = () => {
 
   // footer
   document.querySelector("footer p").textContent = siteContent.footer.copyright;
+
+  // changing nav content to green
+  Array.from(document.getElementsByTagName("a")).forEach(a => a.style.color = "green");
+
+  // adding nav anchors
+  const nav = document.getElementsByTagName("nav")[0];
+  const newLink1 = document.createElement("a");
+  newLink1.setAttribute("src", "#");
+  newLink1.textContent = "newLink1";
+  newLink1.style.color = "green";
+  nav.appendChild(newLink1);
+
+  const newLink2 = document.createElement("a");
+  newLink2.setAttribute("src", "#");
+  newLink2.textContent = "newLink2";
+  newLink2.style.color = "green";
+  nav.prepend(newLink2);
 };
