@@ -108,7 +108,8 @@ window.onload = () => {
       e.style.position = "relative";
       btn.style.position = "absolute";
       btn.style.zIndex = 999999;
-      e.style.transition = "all 1s";
+      e.style.transition = "all 5s";
+      e.style.transitionTimingFunction = "ease-in-out";
       e.style.transform = `rotate(${Math.floor(Math.random() * 1080)}deg)`;
       e.style.color = randomRGB();
       e.style.backgroundColor = randomRGB();
