@@ -2,6 +2,7 @@ window.onload = () => {
   // create references to important elements
   const digits = Array.from(document.querySelectorAll(".digit:not(#colon)"));
   const digitWrapper = document.getElementsByClassName("digits")[0];
+  const body = document.querySelector("body");
 
   // create 2 buttons
   const startBtn = document.createElement("button");
@@ -10,7 +11,7 @@ window.onload = () => {
   resetBtn.textContent = "reset";
 
   // append them
-  [ startBtn, resetBtn ].forEach(b => document.querySelector("body").appendChild(b));
+  [ startBtn, resetBtn ].forEach(b => body.appendChild(b));
 
   // declare a startTime outside the intervals
   let startTime = Date.now();
