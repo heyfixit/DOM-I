@@ -37,6 +37,65 @@ const siteContent = {
   },
 };
 
-// Example: Update the img src for the logo
-let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+window.onload = () => {
+  // Example: Update the img src for the logo
+  let logo = document.getElementById("logo-img");
+  logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+  const navs = Array.from(document.querySelectorAll("nav a"));
+  navs.forEach((n, idx) => {
+    n.textContent = siteContent.nav[`nav-item-${idx + 1}`];
+  });
+
+  // cta
+  document.querySelector(".cta-text h1").textContent = siteContent.cta.h1;
+  document.querySelector(".cta-text button").textContent = siteContent.cta.button;
+  document.getElementById("cta-img").setAttribute("src", siteContent.cta['img-src']);
+
+  // main-content
+
+  // headers
+  const jsonHeaders = Object.keys(siteContent['main-content'])
+    .filter(k => k.indexOf("h4") > -1)
+    .map(k => siteContent['main-content'][k]);
+
+  Array.from(document.getElementsByTagName("h4"))
+    .forEach((h, idx) => h.textContent = jsonHeaders[idx]);
+
+  // content
+  const jsonPs = Object.keys(siteContent['main-content'])
+    .filter(k => k.indexOf("content") > -1)
+    .map(k => siteContent['main-content'][k]);
+
+  Array.from(document.querySelectorAll(".main-content p"))
+    .forEach((p, idx) => p.textContent = jsonPs[idx]);
+
+  // main-content img
+  document.getElementById("middle-img").setAttribute("src", siteContent['main-content']['middle-img-src'])
+
+  // contact
+  const section = document.querySelector(".contact");
+  Object.keys(siteContent.contact).forEach((item, idx) => {
+    section.children[idx].textContent = siteContent.contact[item];
+  });
+
+  // footer
+  document.querySelector("footer p").textContent = siteContent.footer.copyright;
+
+  // changing nav content to green
+  Array.from(document.getElementsByTagName("a")).forEach(a => a.style.color = "green");
+
+  // adding nav anchors
+  const nav = document.getElementsByTagName("nav")[0];
+  const newLink1 = document.createElement("a");
+  newLink1.setAttribute("src", "#");
+  newLink1.textContent = "newLink1";
+  newLink1.style.color = "green";
+  nav.appendChild(newLink1);
+
+  const newLink2 = document.createElement("a");
+  newLink2.setAttribute("src", "#");
+  newLink2.textContent = "newLink2";
+  newLink2.style.color = "green";
+  nav.prepend(newLink2);
+};
