@@ -102,11 +102,8 @@ window.onload = () => {
   // Stretch button
   const btn = document.getElementsByTagName("button")[0];
   btn.onclick = () => {
-    document.getElementsByTagName("body")[0].style.position = "relative";
     Array.from(document.querySelectorAll("body *")).forEach((e) => {
       e.style.zIndex = 0;
-      e.style.position = "relative";
-      btn.style.position = "absolute";
       btn.style.zIndex = 999999;
       e.style.transition = "all 5s";
       e.style.transitionTimingFunction = "ease-in-out";

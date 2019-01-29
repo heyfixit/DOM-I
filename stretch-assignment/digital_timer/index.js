@@ -1,5 +1,5 @@
 window.onload = () => {
-  // crate references to important elements
+  // create references to important elements
   const digits = Array.from(document.querySelectorAll(".digit:not(#colon)"));
   const digitWrapper = document.getElementsByClassName("digits")[0];
 
